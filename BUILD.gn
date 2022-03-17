@@ -3375,7 +3375,7 @@ skia_executable("skia_c_api_example") {
 }
 
 skia_executable("skia_test") {
-  sources = [ "example/test/main.c" ]
+  sources = [ "example/test/main.cc" ]
   include_dirs = [ "." ]
   deps = [ ":skia" ]
 }
