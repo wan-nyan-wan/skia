@@ -24,11 +24,9 @@
 static void emit_png(const char* path, sk_sp<SkSurface> surface) {
     sk_sp<SkImage> image = surface->makeImageSnapshot();
     sk_sp<SkData> data = image->encodeToData();
-    image->unref();
     FILE* f = fopen(path, "wb");
     fwrite(data->data(), data->size(), 1, f);
     fclose(f);
-    data->unref();
 }
 
 void draw(SkCanvas* canvas) {
@@ -72,7 +70,5 @@ int main() {
     SkCanvas* canvas = surface->getCanvas();
     draw(canvas);
     emit_png("skia-test.png", surface);
-    surface->unref();
-    std::cout << "hello\n";
     return 0;
 }
